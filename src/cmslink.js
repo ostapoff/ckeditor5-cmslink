@@ -1,7 +1,7 @@
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview'
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin'
 import LinkUI from '@ckeditor/ckeditor5-link/src/linkui'
-import searchIcon from 'ckeditor5-cmslink/theme/icons/search.svg'
+import searchIcon from '@ckeditor/ckeditor5-cmslink/theme/icons/search.svg'
 
 export default class Cmslink extends Plugin {
 	init() {
