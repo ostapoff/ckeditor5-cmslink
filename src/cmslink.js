@@ -30,8 +30,7 @@ export default class Cmslink extends Plugin {
 
 		button.on('execute', () => {
       alert('execute')
-      console.log(this.linkFormView)
-			this.linkFormView.urlInputView.value = 'http://some.internal.link'
+			this.linkFormView.urlInputView.fieldView.value = 'http://some.internal.link'
 		})
 
 		return button
