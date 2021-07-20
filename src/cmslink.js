@@ -23,13 +23,14 @@ export default class Cmslink extends Plugin {
 
 		button.set({
       icon: searchIcon,
-			label: 'Internal link',
+			label: 'Internal page lookup',
 			withText: false,
 			tooltip: true
 		})
 
 		button.on('execute', () => {
       alert('execute')
+      console.log(this.linkFormView)
 			this.linkFormView.urlInputView.value = 'http://some.internal.link'
 		})
 
