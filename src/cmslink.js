@@ -3,7 +3,7 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin'
 import LinkUI from '@ckeditor/ckeditor5-link/src/linkui'
 import searchIcon from 'ckeditor5-cmslink/theme/icons/search.svg'
 
-class Cmslink extends Plugin {
+export default class Cmslink extends Plugin {
 	init() {
 		const editor = this.editor
 		const linkUI = editor.plugins.get(LinkUI)
