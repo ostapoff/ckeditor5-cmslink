@@ -6,6 +6,11 @@ import searchIcon from '@ckeditor/ckeditor5-cmslink/theme/icons/search.svg'
 export default class Cmslink extends Plugin {
 	init() {
 		const editor = this.editor
+		const config = editor.config.get('cmslink')
+		const onExecute = config && config.execute
+		if (!onExecute) return
+		this.onExecute = onExecute
+
 		const linkUI = editor.plugins.get(LinkUI)
 
 		this.linkFormView = linkUI.formView
@@ -29,10 +34,20 @@ export default class Cmslink extends Plugin {
 		})
 
 		button.on('execute', () => {
-      alert('execute')
-			this.linkFormView.urlInputView.fieldView.value = 'http://some.internal.link'
+			this.linkFormView.listenTo(document, 'mousedown', this._stopMouseDownEvent, { priority: 'highest' })
+
+      this.onExecute((url) => {
+				this.linkFormView.stopListening(document, 'mousedown', this._stopMouseDownEvent)
+				this.linkFormView.urlInputView.fieldView.value = url
+			}, () => {
+				this.linkFormView.stopListening(document, 'mousedown', this._stopMouseDownEvent)
+			})
 		})
 
 		return button
+	}
+
+	_stopMouseDownEvent(evt) {
+		evt.stop()
 	}
 }
