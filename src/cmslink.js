@@ -24,7 +24,7 @@ export default class Cmslink extends Plugin {
 		button.set({
       icon: searchIcon,
 			label: 'Internal link',
-			withText: true,
+			withText: false,
 			tooltip: true
 		})
 
